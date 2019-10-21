@@ -32,6 +32,7 @@ end
   Album.create(name: name, photographer_id: rand(10), created_at: Time.now, updated_at: Time.now)
 end
 
+
 10.times.each do
   name = Faker::Music.genre
   Category.create(name: name)
