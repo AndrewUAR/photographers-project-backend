@@ -11,7 +11,8 @@ photographer2 = Photographer.create(name: "Avi", birthdate: "1989-06-22", bio: "
 picture1 = Picture.create(name: "Nature", description: "bbbbbbbbbbbbbbbbbbb", photographer_id: photographer1.id)
 picture2 = Picture.create(name: "Street", description: "ccccccccccccccccccc", photographer_id: photographer1.id)
 
-album1 = Album.create(name: "album1", description: "sssssssssssssss")
+
+album1 = Album.create(name: "album1", description: "sssssssssssssss", photographer_id: photographer1.id)
 
 album_photo1 = AlbumPicture.create(album_id: album1.id, picture_id: picture1.id)
 
