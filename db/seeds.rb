@@ -5,17 +5,43 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-photographer1 = Photographer.create(name: "Jack", birthdate: "1990-12-08", bio: "aaaaaaaaaaaaaaaaaaaaaaa", city: "Chicago", start_date: "2016-10-20")
-photographer2 = Photographer.create(name: "Avi", birthdate: "1989-06-22", bio: "bbbbbaaaaababaabababbaba", city: "Dallas", start_date: "2018-12-12")
+require 'faker'
+require 'securerandom'
 
-picture1 = Picture.create(name: "Nature", description: "bbbbbbbbbbbbbbbbbbb", photographer_id: photographer1.id)
-picture2 = Picture.create(name: "Street", description: "ccccccccccccccccccc", photographer_id: photographer1.id)
+#
+Photographer.delete_all
+Picture.delete_all
+Album.delete_all
+Category.delete_all
+AlbumPicture.delete_all
+PictureCategory.delete_all
 
 
-album1 = Album.create(name: "album1", description: "sssssssssssssss", photographer_id: photographer1.id)
+10.times.each do
+  name = Faker::Artist.name
+  Photographer.create(name: name)
+end
 
-album_photo1 = AlbumPicture.create(album_id: album1.id, picture_id: picture1.id)
+50.times.each do
+  name = Faker::Hipster.word
+  Picture.create(name: name, description: "blah", photographer_id: rand(10), created_at: Time.now, updated_at: Time.now)
+end
 
-category1 = Category.create(name: "Street Photography")
+5.times.each do
+  name = Faker::House.room
+  Album.create(name: name, photographer_id: rand(10), created_at: Time.now, updated_at: Time.now)
+end
 
-picture_category1 = PictureCategory.create(picture_id: picture2.id, category_id: category1.id)
+
+10.times.each do
+  name = Faker::Music.genre
+  Category.create(name: name)
+end
+
+10.times.each do
+  AlbumPicture.create(album_id: rand(10), picture_id: rand(10), created_at: Time.now, updated_at: Time.now)
+end
+
+10.times.each do
+  PictureCategory.create(picture_id: rand(10), category_id: rand(10), created_at: Time.now, updated_at: Time.now)
+end
