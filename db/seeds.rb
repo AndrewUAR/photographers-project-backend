@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+photographer1 = Photographer.create(name: "Jack", birthdate: "1990-12-8", bio: "aaaaaaaaaaaaaaaaaaaaaaa", city: "Chicago", start_date: "2016-10-20")
+
+picture1 = Picture.create(name: "Nature", description: "bbbbbbbbbbbbbbbbbbb", photographer_id: photographer1.id)
+picture2 = Picture.create(name: "Street", description: "ccccccccccccccccccc", photographer_id: photographer1.id)
+
+album1 = Album.create(name: "album1", photographer_id: photographer1.id)
+
+album_photo1 = AlbumPicture.create(album_id: album1.id, picture_id: picture1.id)
+
+category1 = Category.create(name: "Street Photography")
+
+picture_category1 = PictureCategory.create(picture_id: picture2.id, category_id: category1.id)
