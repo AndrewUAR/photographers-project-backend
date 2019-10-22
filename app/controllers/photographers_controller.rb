@@ -10,4 +10,9 @@ class PhotographersController < ApplicationController
     photographer = Photographer.find_by(id: params[:id])
     render json: PhotographerSerializer.new(photographer).to_serialized_json
   end
+
+  def post_params
+    params.require(:post).permit(:name, :birthdate, :bio, :start_date, :city, :image)
+  end
+
 end
