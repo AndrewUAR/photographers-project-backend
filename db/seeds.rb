@@ -17,10 +17,18 @@ AlbumPicture.delete_all
 PictureCategory.delete_all
 
 
+def time_rand from = 0.0, to = Time.now
+    Time.at(from + rand * (to.to_f - from.to_f))
+end
+
+
 10.times.each do
   name = Faker::Artist.name
-  Photographer.create(name: name)
+  bio = Faker::Quote.famous_last_words
+  city = Faker::Movies::LordOfTheRings.location
+  Photographer.create(name: name, birthdate: Time.now, start_date: time_rand, bio: bio, city: city)
 end
+
 
 50.times.each do
   name = Faker::Hipster.word
