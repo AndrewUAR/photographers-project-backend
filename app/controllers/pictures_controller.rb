@@ -16,4 +16,10 @@ class PicturesController < ApplicationController
     picture = Picture.find_by(id: params[:id])
     render json: picture
   end
+
+  def destroy
+    picture = Picture.find_by(id: params[:id])
+    picture.destroy
+    render json: picture
+  end
 end
