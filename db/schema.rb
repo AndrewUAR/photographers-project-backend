@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_21_183946) do
+ActiveRecord::Schema.define(version: 2019_10_21_200213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,24 @@ ActiveRecord::Schema.define(version: 2019_10_21_183946) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "picture_id", null: false
+    t.bigint "photographer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photographer_id"], name: "index_comments_on_photographer_id"
+    t.index ["picture_id"], name: "index_comments_on_picture_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "picture_id", null: false
+    t.bigint "photographer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photographer_id"], name: "index_likes_on_photographer_id"
+    t.index ["picture_id"], name: "index_likes_on_picture_id"
+  end
+
   create_table "photographers", force: :cascade do |t|
     t.string "name"
     t.date "birthdate"
@@ -92,6 +110,10 @@ ActiveRecord::Schema.define(version: 2019_10_21_183946) do
   add_foreign_key "album_pictures", "albums"
   add_foreign_key "album_pictures", "pictures"
   add_foreign_key "albums", "photographers"
+  add_foreign_key "comments", "photographers"
+  add_foreign_key "comments", "pictures"
+  add_foreign_key "likes", "photographers"
+  add_foreign_key "likes", "pictures"
   add_foreign_key "picture_categories", "categories"
   add_foreign_key "picture_categories", "pictures"
   add_foreign_key "pictures", "photographers"

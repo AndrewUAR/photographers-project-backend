@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :likes
   resources :picture_categories
   resources :album_pictures
   resources :pictures
