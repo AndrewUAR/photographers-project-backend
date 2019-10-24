@@ -3,5 +3,5 @@ class Photographer < ApplicationRecord
   has_many :albums, :dependent => :destroy
   has_many :categories, through: :pictures
 
-  has_one_attached :avatar
+  has_one_attached :image
 end
