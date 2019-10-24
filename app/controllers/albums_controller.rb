@@ -27,7 +27,4 @@ class AlbumsController < ApplicationController
     render json: album
   end
 
-  def add_photo_to_album
-
-  end
 end
