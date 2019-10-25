@@ -5,6 +5,7 @@ class Picture < ApplicationRecord
   has_many :album_pictures, dependent: :destroy
   has_many :categories, through: :picture_categories
   has_many :albums, through: :album_pictures
+  has_many :likes
 
   has_one_attached :image
 end
